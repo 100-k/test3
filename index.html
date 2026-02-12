@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sound</title>
+
+<style>
+html,body{
+margin:0;
+height:100%;
+background:#000;
+}
+
+video{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<video id="v" playsinline preload="auto" muted>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+const v = document.getElementById("v");
+
+function start(){
+  v.play().then(()=>{
+    v.muted = false; // 再生成功後に音ON
+  });
+  window.removeEventListener("pointerdown", start);
+}
+
+window.addEventListener("pointerdown", start);
+</script>
+
+</body>
+</html>
